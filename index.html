@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    ...
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/3b7f2c5c3e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  </head>
+  
+
+<body class="bg-gray-100">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-white shadow-md flex justify-between items-center px-6 py-4 z-10">
+    <div class="flex items-center">
+      <span class="font-bold text-lg ml-2">English</span>
+      <img src="./assets/logo.png" alt="Logo" class="w-8 h-8">
+      <span>জানালা</span>
+    </div>
+    <div>
+      <button id="faq-button" class="btn btn-outline btn-primary">
+        <span><img src="./assets/fa-circle-question.png" alt="" class="w-5 h-5"></span> FAQ
+      </button>
+      <button id="learn-button" class="btn btn-outline btn-primary">
+        <span><img src="./assets/fa-book-open.png" alt="" class="w-5 h-5"></span> Learn
+      </button>
+      <button id="logout-button" class="btn btn-outline btn-error">
+        <span><img src="./assets/fa-arrow-right-from-bracket.png" alt="" class="w-5 h-5"></span> Logout
+      </button>
+    </div>
+  </nav>
+
+  <!-- Banner Section -->
+  <section class="mt-20 flex flex-col md:flex-row items-center justify-center px-6 py-12">
+    <div class="w-full md:w-1/2">
+      <h1 class="text-4xl font-bold"><span class="text-blue-500">English</span> is Easy!!</h1>
+      <p class="mt-4 text-gray-600">
+        আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা<br>
+        আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে<br>
+        যাবে অন্য একটি Level এ।
+      </p>
+      <input type="text" placeholder="Enter Your Name" class="input input-bordered w-full max-w-xs mt-4">
+      <input type="password" placeholder="Enter Password" class="input input-bordered w-full max-w-xs mt-2">
+      <button id="get-started-button" class="btn btn-primary mt-4 w-full max-w-xs">Get Started</button>
+    </div>
+    <div class="w-full md:w-1/2 flex justify-center">
+      <img src="./assets/hero-student.png" alt="Learning Image" class="w-82">
+    </div>
+  </section>
+
+  <!-- Vocabulary Section -->
+  <section id="lesson-section" class="text-center py-12">
+    <h2 class="text-2xl font-bold text-blue-500">
+      Let's <span class="text-black">Learn Vocabularies</span>
+    </h2>
+
+   <!-- Lesson Buttons -->
+<div id="lesson-buttons" class="flex flex-wrap justify-center gap-2 mt-4">
+    <button onclick="loadLesson(1)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 1
+    </button>
+    
+    <button onclick="loadLesson(2)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 2
+    </button>
+  
+    <button onclick="loadLesson(3)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 3
+    </button>
+  
+    <button onclick="loadLesson(4)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 4
+    </button>
+  
+    <button onclick="loadLesson(5)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 5
+    </button>
+  
+    <button onclick="loadLesson(6)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 6
+    </button>
+  
+    <button onclick="loadLesson(7)" class="btn btn-outline btn-primary btn-md text-blue-500 hover:bg-blue-500 hover:text-white flex items-center gap-2">
+      <img src="/assets/fa-book-open.png" alt="Book Icon" class="w-5 h-5" />
+      Lesson 7
+    </button>
+  </div>
+  
+<!-- Modal HTML -->
+<div id="wordModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <div id="modalContent" class="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/2 text-left">
+      <!-- Dynamic content will come here -->
+    </div>
+  </div>
+  
+    <!-- Vocabulary Cards -->
+    <div id="user-container" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+      <!-- Lessons will appear here -->
+    </div>
+
+    <!-- Message Display -->
+    <div id="lesson-message" class="mt-4 text-lg font-semibold text-gray-700 border border-gray-300 p-4 rounded-md bg-[#F8F8F8] text-center hidden">
+      <img class="mx-auto mb-2" src="./assets/alert-error.png" alt="Error Alert Icon">
+      <p class="text-sm"><span lang="bn">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</span></p>
+      <h1 class="text-gray-500 text-base mt-2"><span lang="bn">নেক্সট Lesson এ যান</span></h1>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq-section" class="items-center py-12">
+    <h2 class="text-center text-2xl font-bold text-blue-500">Frequently <span class="text-black">Asked Questions</span></h2>
+
+    <!-- FAQ Accordion -->
+    <div class="collapse collapse-plus bg-base-100 border border-base-300 mt-4">
+        <input type="radio" name="faq-accordion" checked="checked" />
+        <div class="collapse-title font-semibold">1. How can I start learning English on this website?</div>
+        <div class="collapse-content text-sm">
+          You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer structured courses to guide you step by step.
+        </div>
+      </div>
+      
+      <div class="collapse collapse-plus bg-base-100 border border-base-300 mt-4">
+        <input type="radio" name="faq-accordion" />
+        <div class="collapse-title font-semibold">2. Is this website free to use?</div>
+        <div class="collapse-content text-sm">
+          Yes, our website offers many free resources. However, some premium courses may require a fee.
+        </div>
+      </div>
+      
+      <div class="collapse collapse-plus bg-base-100 border border-base-300 mt-4">
+        <input type="radio" name="faq-accordion" />
+        <div class="collapse-title font-semibold">3. Do I need to create an account?</div>
+        <div class="collapse-content text-sm">
+          No, you can access most of our content without creating an account. But creating an account allows you to track your progress.
+        </div>
+      </div>
+      
+      <div class="collapse collapse-plus bg-base-100 border border-base-300 mt-4">
+        <input type="radio" name="faq-accordion" />
+        <div class="collapse-title font-semibold">4. How can I build my English vocabulary?</div>
+        <div class="collapse-content text-sm">
+          Practice regularly with our vocabulary exercises, read articles, and use our quizzes to reinforce your learning.
+        </div>
+      </div>
+      
+      <div class="collapse collapse-plus bg-base-100 border border-base-300 mt-4">
+        <input type="radio" name="faq-accordion" />
+        <div class="collapse-title font-semibold">5. Do you offer certificates for completed courses?</div>
+        <div class="collapse-content text-sm">
+          Yes, we provide certificates for our structured courses once you complete all required lessons and pass the final quiz.
+        </div>
+      </div>
+      
+
+    <!-- More FAQs can be added here -->
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer sm:footer-horizontal bg-white text-neutral-content p-10">
+    <aside>
+      <div class="flex items-center">
+        <span class="font-bold text-lg ml-2 text-black">English</span>
+        <img src="./assets/logo.png" alt="Logo" class="w-8 h-8">
+        <span class="text-black">জানালা</span>
+      </div>
+      <div>
+        <h2 class="text-black" lang="bn">ইংরেজি শিখুন সহজে</h2><br />
+        <p class="text-black">Providing ED-Tech Applications since 2025</p>
+      </div>
+    </aside>
+
+    <nav>
+      <h6 class="footer-title text-black">Follow us</h6>
+      <div class="grid grid-flow-col gap-4">
+        <!-- Social Icons -->
+      </div>
+    </nav>
+  </footer>
+
+  <script src="./script/script.js"></script>
+    
+    
+    
+  
+</body>
+
+</html>
